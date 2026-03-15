@@ -11,6 +11,7 @@ import { Education } from './components/Education';
 import { Certificates } from './components/Certificates';
 import { Creative } from './components/Creative';
 import { Contact } from './components/Contact';
+import { FloatingCV } from './components/FloatingCV';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Creative />
           <Contact />
         </main>
+        <FloatingCV />
       </div>
     </ReactLenis>
   );
