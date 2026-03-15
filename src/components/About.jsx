@@ -1,32 +1,8 @@
-import { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import './About.css';
 
 export const About = () => {
-  const containerRef = useRef(null);
-  
-  // 1. Motion Values
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  // 2. Springs for Smoothness
-  const springConfig = { damping: 30, stiffness: 400 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  // 3. Transformation for Mask
-  const maskImage = useTransform(
-    [smoothX, smoothY],
-    ([x, y]) => `radial-gradient(circle 150px at ${x}px ${y}px, black 0%, transparent 100%)`
-  );
-
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const { left, top } = containerRef.current.getBoundingClientRect();
-    mouseX.set(e.clientX - left);
-    mouseY.set(e.clientY - top);
-  };
-
   return (
     <section className="section about-section" id="about">
       <div className="container">
@@ -62,30 +38,10 @@ export const About = () => {
             </div>
           </div>
           <div className="about-visual">
-            <motion.div 
-              ref={containerRef}
-              className="about-image-wrapper"
-              onMouseMove={handleMouseMove}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              whileHover="hover"
-            >
-               {/* Base Portrait */}
+            <div className="about-image-wrapper">
                <img src="/anudeep.png" alt="Anudeep Reddy" className="about-image" />
-               
-               {/* Hover Reveal GIF Layer */}
-               <motion.div 
-                  className="reveal-layer"
-                  style={{
-                    WebkitMaskImage: maskImage,
-                    maskImage: maskImage,
-                  }}
-               >
-                 <img src="/reveal.gif" alt="Reveal" className="about-image reveal-gif" />
-               </motion.div>
-
                <div className="creative-blob"></div>
-            </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>
