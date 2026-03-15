@@ -39,7 +39,7 @@ export const About = () => {
           </div>
           <div className="about-visual">
             <div className="about-image-wrapper">
-               {/* Decorative elements or a 3D avatar could go here */}
+               <img src="/anudeep.png" alt="Anudeep Reddy" className="about-image" />
                <div className="creative-blob"></div>
             </div>
           </div>
