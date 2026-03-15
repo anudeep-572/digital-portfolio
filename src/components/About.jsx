@@ -1,19 +1,23 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import './About.css';
 
 export const About = () => {
   const containerRef = useRef(null);
+  
+  // 1. Motion Values
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
+  // 2. Springs for Smoothness
   const springConfig = { damping: 30, stiffness: 400 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
+  // 3. Transformation for Mask
   const maskImage = useTransform(
     [smoothX, smoothY],
-    ([x, y]) => `radial-gradient(circle 120px at ${x}px ${y}px, black 100%, transparent 100%)`
+    ([x, y]) => `radial-gradient(circle 150px at ${x}px ${y}px, black 0%, transparent 100%)`
   );
 
   const handleMouseMove = (e) => {
