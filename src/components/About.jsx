@@ -1,5 +1,5 @@
-import { motion, useMotionValue, useSpring, useMotionValueEvent } from 'framer-motion';
-import { useState, useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import './About.css';
 
 export const About = () => {
@@ -11,15 +11,10 @@ export const About = () => {
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  const maskImage = useMotionValue(`radial-gradient(circle 120px at 0px 0px, black 100%, transparent 100%)`);
-
-  // Dynamically update the mask string whenever smoothX/smoothY change
-  useMotionValueEvent(smoothX, "change", () => {
-    maskImage.set(`radial-gradient(circle 120px at ${smoothX.get()}px ${smoothY.get()}px, black 100%, transparent 100%)`);
-  });
-  useMotionValueEvent(smoothY, "change", () => {
-    maskImage.set(`radial-gradient(circle 120px at ${smoothX.get()}px ${smoothY.get()}px, black 100%, transparent 100%)`);
-  });
+  const maskImage = useTransform(
+    [smoothX, smoothY],
+    ([x, y]) => `radial-gradient(circle 120px at ${x}px ${y}px, black 100%, transparent 100%)`
+  );
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
