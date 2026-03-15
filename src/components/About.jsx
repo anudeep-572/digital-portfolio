@@ -19,11 +19,10 @@ export const About = () => {
             </h2>
             <div className="about-text">
               <p className="about-name">Hi, I'm <span className="text-glow">Anudeep</span></p>
-              <h3 className="about-expertise">3D Developer & Motion Designer</h3>
+              <h3 className="about-expertise">Fullstack Software Developer</h3>
               <p className="about-description">
-                I specialize in bridging the gap between technical development and creative visual design. 
-                With a strong foundation in coding and a passion for 3D arts, I create immersive 
-                digital experiences that are both functional and visually stunning.
+                I specialize in building robust and scalable web applications by combining strong backend logic with intuitive frontend design. With a solid foundation in full-stack development, I create efficient, user-focused digital solutions that are both functional and seamless to use.
+
               </p>
               <div className="about-stats">
                 <div className="stat-item">
