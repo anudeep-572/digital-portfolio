@@ -3,7 +3,9 @@ import { ReactLenis } from 'lenis/react';
 import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { About } from './components/About';
 import { Works } from './components/Works';
+import { Training } from './components/Training';
 import { Skills } from './components/Skills';
 import { Education } from './components/Education';
 import { Certificates } from './components/Certificates';
@@ -18,7 +20,9 @@ function App() {
         <Navbar />
         <main>
           <Hero />
+          <About />
           <Works />
+          <Training />
           <Skills />
           <Education />
           <Certificates />

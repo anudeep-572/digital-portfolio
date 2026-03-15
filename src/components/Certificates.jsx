@@ -9,13 +9,6 @@ export const Certificates = () => {
   
   const certificates = [
     {
-      title: "Design Thinking & Figma",
-      issuer: "Training",
-      date: "2025",
-      link: "#",
-      icon: <BookOpen size={24} />
-    },
-    {
       title: "Computational Theory",
       issuer: "Infosys",
       date: "2025",
