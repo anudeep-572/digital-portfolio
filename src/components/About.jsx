@@ -1,8 +1,33 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useMotionValueEvent } from 'framer-motion';
+import { useState, useRef } from 'react';
 import './About.css';
 
 export const About = () => {
+  const containerRef = useRef(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 30, stiffness: 400 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  const maskImage = useMotionValue(`radial-gradient(circle 120px at 0px 0px, black 100%, transparent 100%)`);
+
+  // Dynamically update the mask string whenever smoothX/smoothY change
+  useMotionValueEvent(smoothX, "change", () => {
+    maskImage.set(`radial-gradient(circle 120px at ${smoothX.get()}px ${smoothY.get()}px, black 100%, transparent 100%)`);
+  });
+  useMotionValueEvent(smoothY, "change", () => {
+    maskImage.set(`radial-gradient(circle 120px at ${smoothX.get()}px ${smoothY.get()}px, black 100%, transparent 100%)`);
+  });
+
+  const handleMouseMove = (e) => {
+    if (!containerRef.current) return;
+    const { left, top } = containerRef.current.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
+  };
+
   return (
     <section className="section about-section" id="about">
       <div className="container">
@@ -38,10 +63,30 @@ export const About = () => {
             </div>
           </div>
           <div className="about-visual">
-            <div className="about-image-wrapper">
+            <motion.div 
+              ref={containerRef}
+              className="about-image-wrapper"
+              onMouseMove={handleMouseMove}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              whileHover="hover"
+            >
+               {/* Base Portrait */}
                <img src="/anudeep.png" alt="Anudeep Reddy" className="about-image" />
+               
+               {/* Hover Reveal GIF Layer */}
+               <motion.div 
+                  className="reveal-layer"
+                  style={{
+                    WebkitMaskImage: maskImage,
+                    maskImage: maskImage,
+                  }}
+               >
+                 <img src="/reveal.gif" alt="Reveal" className="about-image reveal-gif" />
+               </motion.div>
+
                <div className="creative-blob"></div>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

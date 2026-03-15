@@ -88,6 +88,31 @@
   transform: translateY(-10px);
 }
 
+.reveal-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about-image-wrapper:hover .reveal-layer {
+  opacity: 1;
+}
+
+.reveal-gif {
+  filter: brightness(1.2) contrast(1.1);
+  transform: translateY(-10px); /* Match the base image lift */
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 24px;
+}
+
 .creative-blob {
   position: absolute;
   width: 100%;
