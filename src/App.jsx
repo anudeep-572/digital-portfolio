@@ -7,7 +7,7 @@ import { About } from './components/About';
 import { Works } from './components/Works';
 import { Training } from './components/Training';
 import { Skills } from './components/Skills';
-import { Education } from './components/Education';
+
 import { Certificates } from './components/Certificates';
 import { Creative } from './components/Creative';
 import { Contact } from './components/Contact';
@@ -25,7 +25,7 @@ function App() {
           <Works />
           <Training />
           <Skills />
-          <Education />
+
           <Certificates />
           <Creative />
           <Contact />

@@ -35,7 +35,7 @@ export const Works = () => {
     { 
       title: 'Veterinary Clinic', 
       type: 'Java Spring Backend Project', 
-      year: '2024', 
+      year: '2025', 
       link: 'https://github.com/anudeep-572/Veternary_Clinic/tree/master',
       github: 'https://github.com/anudeep-572/Veternary_Clinic/tree/master'
     }
