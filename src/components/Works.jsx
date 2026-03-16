@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import './Works.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,9 +12,33 @@ export const Works = () => {
   const itemsRef = useRef([]);
 
   const works = [
-    { title: 'Trade Track', type: 'Trading Journal & Analysis', year: '2025', link: 'https://tradetrack-journal.netlify.app/' },
-    { title: 'LawEzy', type: 'Online Legal Help Platform', year: '2025', link: 'https://www.lawezy.in' },
-    { title: 'CPU Scheduler', type: 'Scheduling Algorithms Simulator', year: '2025', link: 'https://cpu-scheduler-simulator.netlify.app/' }
+    { 
+      title: 'Trade Track', 
+      type: 'Trading Journal & Analysis', 
+      year: '2025', 
+      link: 'https://tradetrack-journal.netlify.app/',
+      github: 'https://github.com/anudeep-572/TradeTrack'
+    },
+    { 
+      title: 'LawEzy', 
+      type: 'Online Legal Help Platform', 
+      year: '2025', 
+      link: 'https://www.lawezy.in' 
+    },
+    { 
+      title: 'CPU Scheduler', 
+      type: 'Scheduling Algorithms Simulator', 
+      year: '2025', 
+      link: 'https://cpu-scheduler-simulator.netlify.app/',
+      github: 'https://github.com/anudeep-572/Intelligent_CPU_Scheduler'
+    },
+    { 
+      title: 'Veterinary Clinic', 
+      type: 'Java Spring Backend Project', 
+      year: '2024', 
+      link: 'https://github.com/anudeep-572/Veternary_Clinic/tree/master',
+      github: 'https://github.com/anudeep-572/Veternary_Clinic/tree/master'
+    }
   ];
 
   useEffect(() => {
@@ -61,13 +85,12 @@ export const Works = () => {
         
         <div className="works-list">
           {works.map((work, i) => (
-            <a 
+            <div 
               key={i} 
-              href={work.link}
-              target="_blank"
-              rel="noreferrer"
               className="work-item hover-target"
               ref={el => itemsRef.current[i] = el}
+              onClick={() => window.open(work.link, '_blank', 'noopener,noreferrer')}
+              style={{ cursor: 'pointer' }}
             >
               <div className="work-item-content">
                 <div className="work-info">
@@ -76,13 +99,29 @@ export const Works = () => {
                 </div>
                 <div className="work-meta">
                   <span className="work-year">{work.year}</span>
-                  <div className="work-icon">
-                    <ArrowUpRight size={32} />
+                  <div className="work-icons">
+                    {work.github && (
+                      <a 
+                        href={work.github} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className="work-icon github-icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                        title="View GitHub Repository"
+                      >
+                        <Github size={24} />
+                      </a>
+                    )}
+                    <div className="work-icon arrow-icon">
+                      <ArrowUpRight size={32} />
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="work-item-bg"></div>
-            </a>
+            </div>
           ))}
         </div>
       </div>

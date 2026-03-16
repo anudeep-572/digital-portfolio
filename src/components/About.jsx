@@ -6,7 +6,7 @@ export const About = () => {
   return (
     <section className="section about-section" id="about">
       <div className="container">
-        <motion.div 
+        <motion.div
           className="about-grid"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,8 +38,8 @@ export const About = () => {
           </div>
           <div className="about-visual">
             <div className="about-image-wrapper">
-               <img src="/anudeep.png" alt="Anudeep Reddy" className="about-image" />
-               <div className="creative-blob"></div>
+              <img src="/anudeep.png" alt="Anudeep Reddy" className="about-image" />
+              <div className="creative-blob"></div>
             </div>
           </div>
         </motion.div>

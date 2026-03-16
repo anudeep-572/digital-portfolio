@@ -55,7 +55,13 @@
 .work-meta {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+.work-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .work-year {
@@ -107,7 +113,22 @@
   background-color: var(--bg-color);
   color: var(--text-primary);
   border-color: var(--bg-color);
+}
+
+.work-item:hover .arrow-icon {
   transform: rotate(45deg);
+}
+
+.github-icon {
+  text-decoration: none;
+  z-index: 10;
+}
+
+.github-icon:hover {
+  background-color: var(--text-primary) !important;
+  color: var(--bg-color) !important;
+  border-color: var(--text-primary) !important;
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
